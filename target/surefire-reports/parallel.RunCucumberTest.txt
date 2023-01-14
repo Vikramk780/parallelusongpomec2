@@ -1,28 +1,43 @@
 -------------------------------------------------------------------------------
 Test set: parallel.RunCucumberTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in parallel.RunCucumberTest
-parallel.RunCucumberTest.initializationError  Time elapsed: 0.004 s  <<< ERROR!
-java.lang.NoClassDefFoundError: io/cucumber/core/runtime/TypeRegistryConfigurerSupplier
-	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
-	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3137)
-	at java.base/java.lang.Class.getConstructor0(Class.java:3342)
-	at java.base/java.lang.Class.getConstructor(Class.java:2151)
-	at org.junit.internal.builders.AnnotatedBuilder.buildRunner(AnnotatedBuilder.java:104)
-	at org.junit.internal.builders.AnnotatedBuilder.runnerForClass(AnnotatedBuilder.java:86)
-	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:70)
-	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:37)
-	at org.junit.runner.Computer.getRunner(Computer.java:50)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.006 s <<< FAILURE! - in parallel.RunCucumberTest
+parallel.RunCucumberTest.initializationError  Time elapsed: 0.006 s  <<< ERROR!
+java.lang.IllegalArgumentException: 
+The plugin specification 'io.qameta.allure.cucumber5jvm.AllureCucumber5Jvm' has a problem:
+
+This plugin is not compatible with this version of Cucumber.
+
+Plugin specifications should have the format of PLUGIN[:[PATH|[URI [OPTIONS]]]
+
+Valid values for PLUGIN are: html, json, junit, message, pretty, progress, rerun, summary, teamcity, testng, timeline, unused, usage
+
+PLUGIN can also be a fully qualified class name, allowing registration of 3rd party plugins. The 3rd party plugin must implement io.cucumber.plugin.Plugin
+	at io.cucumber.core.options.PluginOption.createPluginIsNotCompatible(PluginOption.java:150)
+	at io.cucumber.core.options.PluginOption.parsePluginName(PluginOption.java:125)
+	at io.cucumber.core.options.PluginOption.parse(PluginOption.java:100)
+	at io.cucumber.core.options.RuntimeOptionsBuilder.addPluginName(RuntimeOptionsBuilder.java:66)
+	at io.cucumber.core.options.CucumberOptionsAnnotationParser.addPlugins(CucumberOptionsAnnotationParser.java:86)
+	at io.cucumber.core.options.CucumberOptionsAnnotationParser.parse(CucumberOptionsAnnotationParser.java:41)
+	at io.cucumber.junit.Cucumber.<init>(Cucumber.java:120)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.junit.internal.builders.AnnotatedBuilder.buildRunner(AnnotatedBuilder.java:29)
+	at org.junit.internal.builders.AnnotatedBuilder.runnerForClass(AnnotatedBuilder.java:21)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:59)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:26)
+	at org.junit.runner.Computer.getRunner(Computer.java:40)
 	at org.apache.maven.surefire.junitcore.pc.ParallelComputerBuilder$PC.getRunner(ParallelComputerBuilder.java:379)
 	at org.junit.runner.Computer$1.runnerForClass(Computer.java:31)
-	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:70)
-	at org.junit.runners.model.RunnerBuilder.runners(RunnerBuilder.java:125)
-	at org.junit.runners.model.RunnerBuilder.runners(RunnerBuilder.java:111)
-	at org.junit.runners.Suite.<init>(Suite.java:81)
-	at org.junit.runner.Computer$2.<init>(Computer.java:33)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:59)
+	at org.junit.runners.model.RunnerBuilder.runners(RunnerBuilder.java:101)
+	at org.junit.runners.model.RunnerBuilder.runners(RunnerBuilder.java:87)
+	at org.junit.runners.Suite.<init>(Suite.java:80)
 	at org.junit.runner.Computer.getSuite(Computer.java:28)
 	at org.apache.maven.surefire.junitcore.pc.ParallelComputerBuilder$PC.getSuite(ParallelComputerBuilder.java:353)
-	at org.junit.runner.Request.classes(Request.java:77)
+	at org.junit.runner.Request.classes(Request.java:75)
 	at org.apache.maven.surefire.junitcore.JUnitCoreWrapper.createRequestAndRun(JUnitCoreWrapper.java:126)
 	at org.apache.maven.surefire.junitcore.JUnitCoreWrapper.executeEager(JUnitCoreWrapper.java:107)
 	at org.apache.maven.surefire.junitcore.JUnitCoreWrapper.execute(JUnitCoreWrapper.java:83)
@@ -32,9 +47,4 @@ java.lang.NoClassDefFoundError: io/cucumber/core/runtime/TypeRegistryConfigurerS
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:169)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
-Caused by: java.lang.ClassNotFoundException: io.cucumber.core.runtime.TypeRegistryConfigurerSupplier
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	... 28 more
 

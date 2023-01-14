@@ -10,7 +10,9 @@ import io.cucumber.junit.CucumberOptions;
 		features= {"./src/test/resources/parallel"},
 		glue = {"parallel"},
 		monochrome=true,
-		dryRun=false
+		dryRun=false,
+				plugin = {"pretty",
+						"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 
 
 						

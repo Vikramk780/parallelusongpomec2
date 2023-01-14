@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import AlphaPages.LoginPage;
+import alpha.drivers.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,6 +13,7 @@ import io.cucumber.java.en.When;
 public class LoginPageSteps {
 	
 	WebDriver ldriver;
+	DriverFactory driverFactory;
 	
 	LoginPage loginPage;
 	
@@ -19,9 +21,13 @@ public class LoginPageSteps {
 
 @Given("user is on login page")
 public void user_is_on_login_page() {
-	ldriver =new ChromeDriver();
-	ldriver.get("https://stageapp.botprise.com");
-	loginPage = new LoginPage(ldriver);
+	/* ldriver =new ChromeDriver(); */
+	
+
+	driverFactory=new DriverFactory();
+	loginPage = new LoginPage(DriverFactory.getDriver());
+	driverFactory.getDriver().get("https://stageapp.botprise.com");
+	
 	loginPage.doLogin();
 }
 
@@ -34,7 +40,7 @@ public void user_gets_title() {
 public void title_should_be(String string) {
 	String actualtitle =loginPage.titleVerify();
 	Assert.assertEquals(actualtitle,string);
-	ldriver.close();
+	
 }
 
 }
